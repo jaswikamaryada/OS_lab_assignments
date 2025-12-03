@@ -1,0 +1,44 @@
+Memory Management 
+Laboratory 4 
+Duration: 3 weeks 
+This assignment will help us learn about how page table contents are maintained, and how 
+different page replacement policies work. 
+in 
+the 
+You will need to develop a simulator of a Virtual Memory Manager in C++. The simulator must 
+take 
+following 
+command 
+line 
+arguments: 
+<page-size> 
+<number-of-memory-frames> <replacement-policy> <allocation-policy> 
+<path-to-memory-trace-file>. 
+Experiment with: 
+● Different page sizes between 64 B and 64 KB 
+● Different number of memory frames between 4 and 64 K 
+● 4 replacement policies: Optimal, FIFO, LRU, Random 
+● 2 allocation policies: Global and Local. In the case of Local, you can follow the “equal 
+allocation” policy. 
+● 2 different memory trace files available here: one is a small trace (for testing and 
+debugging) and the other is a longer one (for analysis). These are collected from 4 
+different real world applications. Assume that these 4 processes are running 
+simultaneously, all of them making accesses to the memory. Each line in the trace file 
+corresponds to one access. The lines are listed in the order accessed by the processes. 
+The format of one line is <process id>,<virtual address>. Assume a 64-bit 
+system. Tip: use uint64 type for addresses in your code (reference (note that the 
+documentation varies with different versions of C++ – use the “Standard Revision” 
+dropdown in the top-right of the page)). 
+Study the different combinations of the above parameters in terms of the number of page faults. 
+Implementation suggestions: 
+● Design a PageTable data structure, and implement it as a class. Create 4 objects of this 
+data structure, one for each process. 
+● Design a FrameStatus data structure, and implement it as a class. 
+● For every access mentioned in the file, search for the virtual address to physical address 
+mapping in the corresponding page table. If not found, increment the page fault counter 
+(maintain a global page fault counter, as well as per-process page fault counters). Then 
+add the mapping to the page table by finding a free frame if available, or by evicting a 
+frame based on the replacement policy being followed. 
+Submission: 
+● Source code with suitable makefiles 
+● Report containing observations in the form of graphs and their analyses. 
